@@ -1,0 +1,24 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Objective {
+  id          String      @id @default(uuid())
+  title       String
+  description String
+  keyResults  KeyResult[]
+}
+
+model KeyResult {
+  id          String    @id @default(uuid())
+  description String
+  isCompleted Boolean   @default(false)
+  objectiveId String
+  objective   Objective @relation(fields: [objectiveId], references: [id], onDelete: Cascade)
+}
