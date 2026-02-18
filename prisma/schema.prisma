@@ -13,7 +13,6 @@ model Objective {
   title       String
   description String
   keyResults  KeyResult[]
-  okrVector   OKRVector?
 }
 
 model KeyResult {
@@ -22,11 +21,4 @@ model KeyResult {
   isCompleted Boolean   @default(false)
   objectiveId String
   objective   Objective @relation(fields: [objectiveId], references: [id], onDelete: Cascade)
-}
-
-model OKRVector {
-  id          Int                    @id @default(autoincrement())
-  embedding   Unsupported("vector")?
-  objective   Objective              @relation(fields: [objectiveId], references: [id])
-  objectiveId String                 @unique
 }
