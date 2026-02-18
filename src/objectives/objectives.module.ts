@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { ObjectivesController } from './objectives.controller';
 import { ObjectivesService } from './objectives.service';
 import {PrismaService} from "../prisma.service";
+import {ScheduleService} from "../schedule.service";
 
 @Module({
   controllers: [ObjectivesController],
-  providers: [ObjectivesService,PrismaService]
+  providers: [ObjectivesService,PrismaService,ScheduleService]
 })
 export class ObjectivesModule {}
